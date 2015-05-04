@@ -15,10 +15,11 @@ class Basic_Dev_Tools_Post_Type_Manager {
 								'post-formats' => 'Post Formats');
 
 	function __construct() {
-		require_once('table_object.php');
+		require_once('tableobject/table_object.php');
 
 		$params['table'] = $this->table_name;
 		$params['primary_key'] = 'id';
+		$params['primary_key_format'] = '%d';
 
 		$params['title'] = array(	'singular'=>'Post Type',
 									'plural'  =>'Post Types Manager');
@@ -30,19 +31,24 @@ class Basic_Dev_Tools_Post_Type_Manager {
 											'taxonomies' => 'Taxonomies');
 
 		$params['fields']['add']['post_type_key'] = array(	'title' => 'Key',
-															'render' => 'text');
+															'render' => 'text',
+															'format' => '%s');
 		$params['fields']['add']['name'] = array(	'title' => 'Plural Name',
-													'render' => 'text');
+													'render' => 'text',
+													'format' => '%s');
 		$params['fields']['add']['singular_name'] = array(	'title' => 'Singular Name',
-															'render' => 'text');
+															'render' => 'text',
+															'format' => '%s');
 		$params['fields']['add']['supports'] = array(	'title' => 'Supports',
 														'render' => 'checkboxes',
+														'format' => '%s',
 														'values' => $this->support_values);
 		$params['fields']['add']['taxonomies'] = array(	'title' => 'Custom Taxonomies',
 														'render' => 'nText',
+														'format' => '%s',
 														'values' => array('taxonomy_key', 'taxonomy_name'));
 		
-		$params['table_options']['final_sql'] = 'ORDER BY name ASC';
+		$params['table_options']['final_sql'] = 'ORDER BY name';
 
 		$this->table_object = new tableObject($params);
 		$this->table_object->add_before_save_filter(array($this, 'save_taxonomies'));

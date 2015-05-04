@@ -9,7 +9,7 @@
  */
 
 defined('ABSPATH') or die('No script kiddies please!');
-//require_once(plugin_dir_path(__FILE__).'includes/cron-manager.php');
+require_once(plugin_dir_path(__FILE__).'includes/cron-manager.php');
 require_once(plugin_dir_path(__FILE__).'includes/post-type-manager.php');
 
 //init
@@ -27,7 +27,7 @@ function marsminds_basic_dev_tools_add_menus() {
 	global $basic_dev_tools_cron_manager_obj, $basic_dev_tools_post_type_manager_obj;
 	
 	add_menu_page('Basic Dev Tools', 'Basic Dev Tools', 'manage_options', 'basic-dev-tools/includes/index.php', '', '', 90);
-	//add_submenu_page('basic-dev-tools/includes/index.php', 'Cron Manager', 'Cron Manager', 'manage_options', 'basic-dev-tools/includes/cron-manager.php', array($basic_dev_tools_cron_manager_obj, 'show'));
+	add_submenu_page('basic-dev-tools/includes/index.php', 'Cron Manager', 'Cron Manager', 'manage_options', 'basic-dev-tools/includes/cron-manager.php', array($basic_dev_tools_cron_manager_obj, 'show'));
 	add_submenu_page('basic-dev-tools/includes/index.php', 'Post Type Manager', 'Post Type Manager', 'manage_options', 'basic-dev-tools/includes/post-type-manager.php', array($basic_dev_tools_post_type_manager_obj, 'show'));
 }
 
@@ -35,7 +35,7 @@ register_activation_hook(__FILE__, 'marsminds_basic_dev_tools_activation');
 function marsminds_basic_dev_tools_activation() {
 	global $basic_dev_tools_cron_manager_obj, $basic_dev_tools_post_type_manager_obj;
 
-	//$basic_dev_tools_cron_manager_obj->plugin_activation();
+	$basic_dev_tools_cron_manager_obj->plugin_activation();
 	$basic_dev_tools_post_type_manager_obj->plugin_activation();
 }
 
@@ -43,6 +43,6 @@ register_deactivation_hook(__FILE__, 'marsminds_basic_dev_tools_deactivation');
 function marsminds_basic_dev_tools_deactivation() {
 	global $basic_dev_tools_cron_manager_obj, $basic_dev_tools_post_type_manager_obj;
 
-	//$basic_dev_tools_cron_manager_obj->plugin_deactivation();
+	$basic_dev_tools_cron_manager_obj->plugin_deactivation();
 	$basic_dev_tools_post_type_manager_obj->plugin_deactivation();
 }

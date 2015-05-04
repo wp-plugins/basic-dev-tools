@@ -1,7 +1,8 @@
 <?php
 class Basic_Dev_Tools_Cron_Manager {
 	var $table_name = 'basictools_cron_schedules';
-	var $table_object = false;
+	var $schedules_manager = false;
+	var $crons_manager = false;
 	var $protected_crons = array(	'wp_maybe_auto_update',
 									'wp_version_check',
 									'wp_update_plugins',
@@ -9,32 +10,47 @@ class Basic_Dev_Tools_Cron_Manager {
 									'wp_scheduled_delete',
 									'wp_scheduled_auto_draft_delete');
 
-	var $protected_schedules = array(	'hourly',
-										'daily',
-										'twicedaily');
+	var $protected_schedules = array();
 
 	public function __construct() {
-		require_once('table_object.php');
+		require_once('tableobject/table_object.php');
 
 		$params['table'] = $this->table_name;
 		$params['instance_name'] = 'schedule_manager';
-		$params['mode'] = 'reduced';
 		$params['primary_key'] = 'id';
+		$params['primary_key_format'] = '%d';
 
-		$params['title'] = array(	'singular'=>'Cron Schedule',
-									'plural'  =>'Cron Schedules');
+		$params['title'] = array(	'singular'=>'Schedule',
+									'plural'  =>'Schedules');
 
 		$params['fields']['show'] = array(	'schedule_key' => 'Key',
 											'description' => 'Description');
 		
 		$params['fields']['add']['schedule_key'] = array(	'title' => 'Schedule Key',
-															'render' => 'text');
+															'render' => 'text',
+															'format' => '%s');
 		$params['fields']['add']['schedule_interval'] = array(	'title' => 'Interval in Seconds',
-																'render' => 'text');
+																'render' => 'text',
+																'format' => '%d');
 		$params['fields']['add']['description'] = array('title' => 'Description',
-														'render' => 'text');
+														'render' => 'text',
+														'format' => '%s');
 		
-		$this->table_object = new tableObject($params);
+		$params['table_options']['final_sql'] = 'ORDER BY schedule_key';
+
+		$protected_schedules = wp_get_schedules();
+		foreach($protected_schedules as $protected_key=>$protected_values) {
+			$this->protected_schedules[] = array(	'schedule_key' => $protected_key,
+													'description' => $protected_values['display']);
+		}
+
+		$this->schedules_manager = new tableObject($params);
+		$this->schedules_manager->set_template('show', 'reduced_show.php');
+		$this->schedules_manager->set_template('form', 'reduced_form.php');
+		$this->schedules_manager->set_table_options('display_array', $this->protected_schedules);
+
+		if($_GET['schedule_manager_add']=='true' || $_GET['schedule_manager_edit'])
+			$this->schedules_manager->set_action('list', false);
 	}
 
 	public function plugin_activation() {
@@ -136,6 +152,7 @@ class Basic_Dev_Tools_Cron_Manager {
 							<th class="manage-column column-next" id="next" scope="col"><span>Action</span></th>
 						</tr>
 					</tfoot>
+					<?php /*
 					<tbody>
 						<tr class="single-cron cron-f749f0fb alternate">
 							<td class="column-hook">wp_version_check<div class="row-actions">Task protected</div></td>
@@ -179,11 +196,12 @@ class Basic_Dev_Tools_Cron_Manager {
 							</td>
 						</tr>
 					</tbody>
+					*/ ?>
 				</table>
 			</div>
 			<div class="basic-dev-tools-schedules-manager-table">
 				<div class="postbox">
-					<?php $this->table_object->init();?>
+					<?php $this->schedules_manager->init();?>
 				</div>
 			</div>
 		</div>

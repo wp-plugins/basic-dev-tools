@@ -1,10 +1,10 @@
 === Basic Dev Tools ===
 Contributors: rodtech
 Donate link: http://marsminds.com
-Tags: developer, development, tools, basic tools
+Tags: developer, development, tools, basic tools, cron, manager
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,9 +18,11 @@ Trying to be easier the way of the develop common things in WP
 
 == Installation ==
 
-1.Download Basic Dev Tools.
-2.Upload the 'basic-dev-tools' directory to your '/wp-content/plugins/' directory, using your favorite method (ftp, sftp, scp, etc...)
-3.Activate Basic Dev Tools from your Plugins page.
+1. Download Basic Dev Tools.
+1. Upload the 'basic-dev-tools' directory to your '/wp-content/plugins/' directory, using your favorite method (ftp, sftp, scp, etc...)
+1. Activate Basic Dev Tools from your Plugins page.
+
+A new menu appears allowing you to use the tools.
 
 == Frequently Asked Questions ==
 
@@ -28,7 +30,20 @@ Trying to be easier the way of the develop common things in WP
 
 Because you haven't asked one yet.
 
+== Upgrade Notice ==
+
+= 1.2 =
+Added Cron Schedules Manager
+
 == Changelog ==
+
+= 1.2 (2015-05-03) =
+* tableobject api updated
+* Added Cron Task Manager menu
+* Added Cron Schedules Manager
+* Added partialy Cron Manager to implement in version 2
+* New tags added to be relevant in the plugin
+* Readme file updated
 
 = 1.1 (2015-04-26) =
 * tableobject api updated
