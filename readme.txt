@@ -33,7 +33,7 @@ None.
 
 == Screenshots ==
 
-1. On activation, the plugin add a new menu with the available tools to use.
+1. On activation, the plugin adds a new menu with the available tools to use.
 2. Special Settings page.
 3. Task Manager Section in Cron Manager Page.
 4. Schedules Manager Section in Cron Manager Page.
