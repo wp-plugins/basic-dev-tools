@@ -29,9 +29,7 @@ A new menu appears allowing you to use the tools.
 
 == Frequently Asked Questions ==
 
-= Why are there no FAQs besides this one? =
-
-Because you haven't asked one yet.
+None.
 
 == Screenshots ==
 
