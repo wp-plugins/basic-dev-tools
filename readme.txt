@@ -4,7 +4,7 @@ Donate link: http://marsminds.com
 Tags: developer, development, tools, basic tools, cron, manager, settings
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,10 +51,13 @@ None.
 
 == Upgrade Notice ==
 
-= 1.3 =
-* tableobject api updated, Added Cron Task Manager Functionality, Added Special Settings menu
+= 1.4 =
+* Bug with files in svn fixed
 
 == Changelog ==
+
+= 1.4 (2015-05-24) =
+* Bug with files in svn fixed
 
 = 1.3 (2015-05-23) =
 * tableobject api updated
