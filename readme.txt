@@ -4,7 +4,7 @@ Donate link: http://marsminds.com
 Tags: developer, development, tools, basic tools, cron, manager, settings
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,10 +51,17 @@ None.
 
 == Upgrade Notice ==
 
-= 1.4 =
-* Bug with files in svn fixed
+= 1.4.1 =
+* New Special Settings added
 
 == Changelog ==
+
+= 1.4.1 (2015-05-24) =
+* Added "Hide Admin Bar" Special Setting
+* Added "Disable Theme Updates" Special Setting
+* Added "Disable Plugin Updates" Special Setting
+* Added "Disable Core Updates" Special Setting
+* Screenshot changed
 
 = 1.4 (2015-05-24) =
 * Bug with files in svn fixed
